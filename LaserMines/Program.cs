@@ -11,6 +11,7 @@ namespace LaserMines
         static void Main(string[] args)
         {
             int varTest;
+            int var2;
         }
     }
 }
