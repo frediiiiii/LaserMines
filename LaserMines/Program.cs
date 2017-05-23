@@ -12,6 +12,7 @@ namespace LaserMines
         {
             int varTest;
             int var2;
+            int varmaster;
         }
     }
 }
