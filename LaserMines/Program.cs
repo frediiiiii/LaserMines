@@ -14,6 +14,7 @@ namespace LaserMines
             int var2;
             int varbranche2;
             int tralala;
+            int var3;
         }
     }
 }
