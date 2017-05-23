@@ -10,6 +10,7 @@ namespace LaserMines
     {
         static void Main(string[] args)
         {
+            int varTest;
         }
     }
 }
