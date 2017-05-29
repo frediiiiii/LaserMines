@@ -64,5 +64,10 @@ namespace LaserMines
 
             return res;
         }
+        
+        public List<Tuple<uint, uint>> Transformer(Tuple<uint, uint> coord, Type type)
+        {
+            
+        }
     }
 }
