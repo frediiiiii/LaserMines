@@ -8,10 +8,10 @@ namespace LaserMines
 {
     public enum Type
     {
-        joueur1,    //bleu
-        joueur2,    //rouge
-        neutre,     //blanc
-        bloc,       //noir
+        joueur1,    // bleu
+        joueur2,    // rouge
+        neutre,     // blanc
+        bloc,       // noir
     }
 
     class Plateau
