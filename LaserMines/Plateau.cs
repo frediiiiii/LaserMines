@@ -67,7 +67,8 @@ namespace LaserMines
         
         public List<Tuple<uint, uint>> Transformer(Tuple<uint, uint> coord, Type type)
         {
-            
+            List<Tuple<uint, uint>> listeFake = new List<Tuple<uint, uint>>();
+            return listeFake;   
         }
     }
 }
