@@ -10,12 +10,16 @@ namespace LaserMines
     {
         static void Main(string[] args)
         {
-            int varTest;
-            int var2;
-            int varbranche2;
-            int tralala;
-            int var3;
-            //test65465t
+            Plateau p = new Plateau();
+            p.AjouterJeton(2, 3, Type.joueur1);
+            p.AjouterJeton(0, 0, Type.bloc);
+            p.AjouterJeton(2, 5, Type.joueur2);
+            p.AjouterJeton(8, 3, Type.neutre);
+
+
+            Console.WriteLine(p.ToString());
+
+            Console.Read();
         }
     }
 }
