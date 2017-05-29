@@ -56,6 +56,7 @@ namespace LaserMines
                     }
                     else
                         res += ".";
+                    res += " ";
                 }
 
                 res += "\n";              
