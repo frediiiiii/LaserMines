@@ -31,7 +31,7 @@ namespace LaserMines
                     res += "*";
                     break;
                 default:
-                    res += " ";
+                    res += ".";
                     break;
             }
 
