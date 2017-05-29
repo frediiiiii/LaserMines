@@ -21,11 +21,6 @@ namespace LaserMines
 
         private Jeton[,] grille { get; set; } = new Jeton[largeur, hauteur];
 
-        public Jeton[,] getGrille()
-        {
-            return grille;
-        }
-
         public int AjouterJeton(uint x, uint y, Type t)
         {
             if(x > largeur - 1 || y > hauteur -1)
