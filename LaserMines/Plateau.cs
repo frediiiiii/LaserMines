@@ -52,27 +52,10 @@ namespace LaserMines
 
                     if (jeton != null)
                     {
-                        switch (jeton.type)
-                        {
-                            case Type.bloc:
-                                res += "#";
-                                break;
-                            case Type.joueur1:
-                                res += "X";
-                                break;
-                            case Type.joueur2:
-                                res += "O";
-                                break;
-                            case Type.neutre:
-                                res += "*";
-                                break;
-                            default:
-                                res += " ";
-                                break;
-                        }
+                        res += jeton.ToString();
                     }
                     else
-                        res += " ";
+                        res += ".";
                 }
 
                 res += "\n";              
