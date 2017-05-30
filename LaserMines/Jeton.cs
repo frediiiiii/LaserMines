@@ -10,8 +10,10 @@ namespace LaserMines
     {        
         public Type type = Type.joueur1;
 
+        // CONSTRUCTEURS
         public Jeton(Type t) { type = t; }
 
+        // METHODES
         override public String ToString()
         {
             String res = "";
@@ -37,5 +39,7 @@ namespace LaserMines
 
             return res;
         }
+        public Type getType() { return type; }
+        public void setType(Type t) { type = t; }
     }
 }

@@ -10,16 +10,58 @@ namespace LaserMines
     {
         static void Main(string[] args)
         {
+            menuPrincipal();
+        }
+
+        static void menuPrincipal()
+        {
             Plateau p = new Plateau();
-            p.AjouterJeton(2, 3, Type.joueur1);
-            p.AjouterJeton(0, 0, Type.bloc);
-            p.AjouterJeton(2, 5, Type.joueur2);
-            p.AjouterJeton(8, 3, Type.neutre);
+            Joueur[] tabJoueurs = new Joueur[2];
+            tabJoueurs[0] = new Joueur(Type.joueur1);
+            tabJoueurs[1] = new Joueur(Type.joueur2);
+            uint choix;
 
+            do
+            {
+                // affichage menu
+                Console.WriteLine("1. Nouvelle partie");
+                Console.WriteLine("2. Quitter");
 
-            Console.WriteLine(p.ToString());
+                // choix
+                do
+                {
+                    uint.TryParse(Console.ReadLine(), out choix);
+                } while (choix != 1 && choix != 2);
 
-            Console.Read();
+                // lancement partie
+                if (choix == 1)
+                {
+                    lancerPartie(p, tabJoueurs);
+                }
+            } while (choix != 2); // quitter
+        }
+
+        static void lancerPartie(Plateau plateau, Joueur[] tabJoueurs)
+        {
+            Joueur joueurActif = tabJoueurs[0];
+            Type typeJeton;
+            Pair<uint, uint> coordonnees;
+            plateau.clear();
+
+            // 1 - JEUX
+            while (plateau.continuerAJouer())
+            {
+                typeJeton = joueurActif.choisirJeton(); // lecture type de jeton
+                do
+                {
+                    coordonnees = joueurActif.choisirCoordonnees(); // lecture coordonnées
+                } while (!plateau.caseLibre(coordonnees)); // recommencer tant qu'on a pas choisi une case libre  
+                plateau.AjouterJeton(coordonnees.First, coordonnees.Second, typeJeton); // placement jeton
+            }
+
+            // 2 - COMPTABILISATION DES SCORES
+
+            // 3 - AFFICHAGE SCORES
         }
     }
 }
