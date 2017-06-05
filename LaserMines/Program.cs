@@ -56,7 +56,7 @@ namespace LaserMines
                 {
                     coordonnees = joueurActif.choisirCoordonnees(); // lecture coordonnées
                 } while (!plateau.caseLibre(coordonnees)); // recommencer tant qu'on a pas choisi une case libre  
-                plateau.AjouterJeton(coordonnees.First, coordonnees.Second, typeJeton); // placement jeton
+                plateau.AjouterJeton(coordonnees.first, coordonnees.second, typeJeton); // placement jeton
             }
 
             // 2 - COMPTABILISATION DES SCORES

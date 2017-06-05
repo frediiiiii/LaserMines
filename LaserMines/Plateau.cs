@@ -45,8 +45,11 @@ namespace LaserMines
 
             grille[x, y] = new Jeton(t);
 
-            if(grille[x, y] != null)
+            if (grille[x, y] != null)
+            {
+                //Transformer();
                 return 0;
+            }
             else
             {
                 Console.WriteLine("AjouterJeton : échec de l'ajout.");
@@ -114,14 +117,64 @@ namespace LaserMines
 
         public bool caseLibre(Pair<uint, uint> c)
         {
-            if (c.First < largeur && c.Second < hauteur)
+            if (c.first < largeur && c.second < hauteur)
             {
-                return (grille[c.First, c.Second].getType() == Type.vide);
+                return (grille[c.first, c.second].getType() == Type.vide);
             }
             else
             {
                 return false;
             }
+        }
+
+        public List<Pair<uint, uint>> CalculerTransformations(Pair<uint, uint> coord, Type t)
+        {
+            var restantes = new List<Pair<uint, uint>>();
+            var sortie = new List<Pair<uint, uint>>();
+            restantes.Add(coord);
+
+            int[] directions = new int[3] { -1, 0, 1 };
+
+            //on a rien aux coordonnees specifiees
+            if (grille[coord.first, coord.second].type == Type.vide)
+                return sortie;
+
+            while (restantes.Count != 0)
+            {
+                foreach (Pair<uint, uint> actuel in restantes)
+                {
+                    //test dans toutes les directions
+                    foreach (int i in directions)
+                    {
+                        foreach (int j in directions)
+                        {
+                            if (i == 0 && j == 0) continue; //jeton actuel
+
+                            Type voisin1 = TypeVoisin(actuel, i, j);    //voisin le plus proche
+                            Type voisin2 = TypeVoisin(actuel, 2 * i, 2 * j);    //voisin le plus proche +1
+                            Type voisin3 = TypeVoisin(actuel, 3 * i, 3 * j);    //voisin le plus proche +2
+
+                            if ((voisin1 != Type.vide
+                                && (voisin1 != t && voisin1 != Type.bloc && voisin1 != Type.neutre))    //voisin1 de type "autre joueur"
+                            && (voisin2 != Type.vide
+                                && (voisin2 != t && voisin2 != Type.bloc && voisin2 != Type.neutre))    //voisin2 de type "autre joueur"
+                            && (voisin3 != Type.vide
+                                && (voisin3 == t || voisin3 == Type.neutre)))                                //voisin3 de type "meme joueur" ou neutre
+                            {
+                                //ajout des coordonnees des jetons a tester puis transformer
+                            }
+                        }
+                    }
+
+                    sortie.Add(actuel);
+                }
+
+            }
+        }
+
+        private Type TypeVoisin(Pair<uint, uint> j, int directionX, int directionY)
+        {
+            return grille[j.first + directionX, j.second + directionY].type;
         }
     }
 }

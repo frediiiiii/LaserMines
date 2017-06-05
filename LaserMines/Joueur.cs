@@ -66,10 +66,10 @@ namespace LaserMines
             uint x, y;
             Console.Write("x : ");
             uint.TryParse(Console.ReadLine(), out x);
-            coord.First = x;
+            coord.first = x;
             Console.Write("y : ");
             uint.TryParse(Console.ReadLine(), out y);
-            coord.Second = y;
+            coord.second = y;
 
             return coord;
         } 
